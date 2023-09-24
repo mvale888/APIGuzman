@@ -50,7 +50,7 @@ public class EstudiantesController : ControllerBase
         if (estudiantesLista.Count > 0)
             estudiante.Id = estudiantesLista.Max(r => r.Id) + 1;
                 estudiantesLista.Add(estudiante);
-                message = "Cliente registrado";
+                message = "Cliente registrado exitosamente";
             return message;
     }
 
