@@ -26,8 +26,8 @@ builder.Services.AddAuthentication(options  =>
 //Configuracion para Validar Autorización. 
 builder.Services.AddAuthorization(options =>
     {
-        options.AddPolicy("read:todoitems", policy => policy.Requirements.Add(new HasScopeRequirement("read:todoitems", "https://dev-utn-frc-iaew.auth0.com/")));
-        options.AddPolicy("write:todoitems", policy => policy.Requirements.Add(new HasScopeRequirement("write:todoitems", "https://dev-utn-frc-iaew.auth0.com/")));
+        options.AddPolicy("read:estudiantes", policy => policy.Requirements.Add(new HasScopeRequirement("read:estudiantes", "https://dev-vbta0v325ola6ezt.us.auth0.com/")));
+        options.AddPolicy("write:estudiantes", policy => policy.Requirements.Add(new HasScopeRequirement("write:estudiantes", "https://dev-vbta0v325ola6ezt.us.auth0.com/")));
     });
     
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
