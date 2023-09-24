@@ -9,6 +9,7 @@ namespace APIEstudiantes.Controllers;
 
 [ApiController]
 [Route("api/estudiantes")]
+[Authorize]
 public class EstudiantesController : ControllerBase
 {
     //creo una lista con objetos Estudiante del Models
@@ -23,6 +24,7 @@ public class EstudiantesController : ControllerBase
 
     //get que trae todos los registros almacenados
     [HttpGet]
+    [Authorize("read:estudiantes")]
     public IEnumerable<Estudiante> Get()
     {
         return estudiantesLista;
@@ -30,6 +32,7 @@ public class EstudiantesController : ControllerBase
 
     //este get solo trae el registro que coincida con el id indicado en la ruta
     [HttpGet("{id}")]
+    [Authorize("read:estudiantes")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<Estudiante> Get(int id)
     {
@@ -44,6 +47,7 @@ public class EstudiantesController : ControllerBase
 
     //ingreso un nuevo registro de estudiante
     [HttpPost]
+    [Authorize("write:estudiantes")]
     public dynamic Post(Estudiante estudiante)
     {
         estudiante.Id = 1;
@@ -55,6 +59,7 @@ public class EstudiantesController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize("write:estudiantes")]
     public dynamic Put(int id, Estudiante estudiante)
     {
         int estudianteIndex = estudiantesLista.FindIndex(r => r.Id == id);
@@ -70,7 +75,7 @@ public class EstudiantesController : ControllerBase
    
    //vamos a eliminar un estudiente en particular
     [HttpDelete("{id}")]
-    
+    [Authorize("write:estudiantes")]
     public dynamic Delete(int id)
     {
         int estudianteIndex = estudiantesLista.FindIndex(r => r.Id == id);
